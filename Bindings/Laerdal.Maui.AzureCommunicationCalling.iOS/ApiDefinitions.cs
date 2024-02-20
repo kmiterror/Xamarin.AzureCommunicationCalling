@@ -477,10 +477,12 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 
 		// @property (copy) DEPRECATED_MSG_ATTRIBUTE("Use onStateChanged in VideoStream types instead") void (^)(ACSLocalVideoStreamsUpdatedEventArgs * _Nonnull) onLocalVideoStreamsUpdated __attribute__((deprecated("Use onStateChanged in VideoStream types instead")));
 		[Export ("onLocalVideoStreamsUpdated", ArgumentSemantic.Copy)]
+		[Obsolete("Use OnStateChanged in VideoStream types instead")]
 		Action<ACSLocalVideoStreamsUpdatedEventArgs> OnLocalVideoStreamsUpdated { get; set; }
 
 		// @property (copy) DEPRECATED_MSG_ATTRIBUTE("Use OnOutgoingAudioStateChanged instead") void (^)(ACSPropertyChangedEventArgs * _Nonnull) onIsMutedChanged __attribute__((deprecated("Use OnOutgoingAudioStateChanged instead")));
 		[Export ("onIsMutedChanged", ArgumentSemantic.Copy)]
+		[Obsolete("Use OnOutgoingAudioStateChanged instead")]
 		Action<ACSPropertyChangedEventArgs> OnIsMutedChanged { get; set; }
 
 		// @property (copy) void (^ _Nullable)(ACSPropertyChangedEventArgs * _Nonnull) onOutgoingAudioStateChanged;
@@ -956,6 +958,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 
 		// @optional -(void)onIsMutedChanged:(ACSCall * _Nonnull)call :(ACSPropertyChangedEventArgs * _Nonnull)args __attribute__((swift_name("call(_:didChangeMuteState:)"))) __attribute__((deprecated("Use call(_:didUpdateOutgoingAudioState:) instead")));
 		[Export ("onIsMutedChanged::")]
+		[Obsolete("Use OnOutgoingAudioStateChanged instead")]
 		void OnIsMutedChanged (ACSCall call, ACSPropertyChangedEventArgs args);
 
 		// @optional -(void)onOutgoingAudioStateChanged:(ACSCall * _Nonnull)call :(ACSPropertyChangedEventArgs * _Nonnull)args __attribute__((swift_name("call(_:didUpdateOutgoingAudioState:)")));
@@ -998,6 +1001,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 
 		// @optional -(void)onVideoStreamsUpdated:(ACSRemoteParticipant * _Nonnull)remoteParticipant :(ACSRemoteVideoStreamsEventArgs * _Nonnull)args __attribute__((swift_name("remoteParticipant(_:didUpdateVideoStreams:)"))) __attribute__((deprecated("Use remoteParticipant(_:didChangeVideoStreamState:)) instead")));
 		[Export ("onVideoStreamsUpdated::")]
+		[Obsolete("Use OnStateChanged instead")]
 		void OnVideoStreamsUpdated (ACSRemoteParticipant remoteParticipant, ACSRemoteVideoStreamsEventArgs args);
 
 		// @optional -(void)onVideoStreamStateChanged:(ACSRemoteParticipant * _Nonnull)remoteParticipant :(ACSVideoStreamStateChangedEventArgs * _Nonnull)args __attribute__((swift_name("remoteParticipant(_:didChangeVideoStreamState:)")));
@@ -1340,6 +1344,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 
 		// @property (readonly) ACSMediaStreamType mediaStreamType __attribute__((deprecated("Use sourceType instead")));
 		[Export ("mediaStreamType")]
+		[Obsolete("Use SourceType instead")]
 		ACSMediaStreamType MediaStreamType { get; }
 
 		// @property (readonly) int id;
@@ -1423,6 +1428,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 
 		// @property (readonly) BOOL isSending __attribute__((deprecated("Use state property instead")));
 		[Export ("isSending")]
+		[Obsolete("Use State property instead")]
 		bool IsSending { get; }
 
 		[Wrap ("WeakDelegate")]
@@ -1565,6 +1571,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 
 		// @property BOOL muted __attribute__((deprecated("Deprecated use muted property in OutgoingAudioOptions instead")));
 		[Export ("muted")]
+		[Obsolete("Deprecated use Muted property in OutgoingAudioOptions instead")]
 		bool Muted { get; set; }
 	}
 
@@ -1960,6 +1967,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 
 		// @property (readonly) BOOL isMuted __attribute__((deprecated("Use isOutgoingAudioMuted instead")));
 		[Export ("isMuted")]
+		[Obsolete("Use IsOutgoingAudioMuted instead")]	
 		bool IsMuted { get; }
 
 		// @property (readonly) BOOL isOutgoingAudioMuted;
@@ -1992,6 +2000,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 
 		// @property (readonly, copy) DEPRECATED_MSG_ATTRIBUTE("Use outgoingVideoStreams instead") NSArray<ACSLocalVideoStream *> * localVideoStreams __attribute__((deprecated("Use outgoingVideoStreams instead")));
 		[Export ("localVideoStreams", ArgumentSemantic.Copy)]
+		[Obsolete("Use OutgoingVideoStreams instead", true)]
 		ACSLocalVideoStream[] LocalVideoStreams { get; }
 
 		// @property (readonly, copy) NSArray<ACSOutgoingVideoStream *> * _Nonnull outgoingVideoStreams;
@@ -2028,10 +2037,12 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 
 		// -(void)muteWithCompletionHandler:(void (^ _Nonnull)(NSError * _Nullable))completionHandler __attribute__((swift_name("mute(completionHandler:)"))) __attribute__((deprecated("Use muteOutgoingAudio instead")));
 		[Export ("muteWithCompletionHandler:")]
+		[Obsolete("Use MuteOutgoingAudioWithCompletionHandler instead", true)]
 		void MuteWithCompletionHandler (Action<NSError> completionHandler);
 
 		// -(void)unmuteWithCompletionHandler:(void (^ _Nonnull)(NSError * _Nullable))completionHandler __attribute__((swift_name("unmute(completionHandler:)"))) __attribute__((deprecated("Use unmuteOutgoingAudio instead")));
 		[Export ("unmuteWithCompletionHandler:")]
+		[Obsolete("Use UnmuteOutgoingAudioWithCompletionHandler instead", true)]
 		void UnmuteWithCompletionHandler (Action<NSError> completionHandler);
 
 		// -(void)muteIncomingAudioWithCompletionHandler:(void (^ _Nonnull)(NSError * _Nullable))completionHandler __attribute__((swift_name("muteIncomingAudio(completionHandler:)")));
@@ -2128,6 +2139,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 
 		// @property (readonly, copy) DEPRECATED_MSG_ATTRIBUTE("Use incomingVideoStreams instead") NSArray<ACSRemoteVideoStream *> * videoStreams __attribute__((deprecated("Use incomingVideoStreams instead")));
 		[Export ("videoStreams", ArgumentSemantic.Copy)]
+		[Obsolete("Use IncomingVideoStreams instead")]
 		ACSRemoteVideoStream[] VideoStreams { get; }
 
 		// @property (readonly, copy) NSArray<ACSIncomingVideoStream *> * _Nonnull incomingVideoStreams;
@@ -2176,6 +2188,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @property (readonly) BOOL isAvailable __attribute__((deprecated("Use state property instead")));
 		[Export ("isAvailable")]
+		[Obsolete("Use State property instead")]	
 		bool IsAvailable { get; }
 
 		[Wrap ("WeakDelegate")]
