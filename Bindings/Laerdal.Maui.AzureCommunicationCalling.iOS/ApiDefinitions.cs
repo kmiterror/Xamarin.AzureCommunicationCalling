@@ -528,6 +528,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 
 		// @property (copy) DEPRECATED_MSG_ATTRIBUTE("Use remoteParticipant(_:didChangeVideoStreamState:)) instead") void (^)(ACSRemoteVideoStreamsEventArgs * _Nonnull) onVideoStreamsUpdated __attribute__((deprecated("Use remoteParticipant(_:didChangeVideoStreamState:)) instead")));
 		[Export ("onVideoStreamsUpdated", ArgumentSemantic.Copy)]
+		[Obsolete("Use OnVideoStreamStateChanged instead")]
 		Action<ACSRemoteVideoStreamsEventArgs> OnVideoStreamsUpdated { get; set; }
 
 		// @property (copy) void (^ _Nullable)(ACSVideoStreamStateChangedEventArgs * _Nonnull) onVideoStreamStateChanged;
@@ -954,6 +955,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 
 		// @optional -(void)onLocalVideoStreamsUpdated:(ACSCall * _Nonnull)call :(ACSLocalVideoStreamsUpdatedEventArgs * _Nonnull)args __attribute__((swift_name("call(_:didUpdateLocalVideoStreams:)"))) __attribute__((deprecated("Use didChangeState on VideoStream types instead")));
 		[Export ("onLocalVideoStreamsUpdated::")]
+		[Obsolete("Use OnStateChanged on VideoStream types instead")]
 		void OnLocalVideoStreamsUpdated (ACSCall call, ACSLocalVideoStreamsUpdatedEventArgs args);
 
 		// @optional -(void)onIsMutedChanged:(ACSCall * _Nonnull)call :(ACSPropertyChangedEventArgs * _Nonnull)args __attribute__((swift_name("call(_:didChangeMuteState:)"))) __attribute__((deprecated("Use call(_:didUpdateOutgoingAudioState:) instead")));
@@ -1685,10 +1687,12 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @property (retain) DEPRECATED_MSG_ATTRIBUTE("Use incomingVideoOptions and outgoingVideoOptions instead") ACSVideoOptions * videoOptions __attribute__((deprecated("Use incomingVideoOptions and outgoingVideoOptions instead")));
 		[Export ("videoOptions", ArgumentSemantic.Retain)]
+		[Obsolete("Use IncomingVideoOptions and OutgoingVideoOptions instead")]
 		ACSVideoOptions VideoOptions { get; set; }
 
 		// @property (retain) DEPRECATED_MSG_ATTRIBUTE("Use incomingAudioOptions and outgoingAudioOptions instead") ACSAudioOptions * audioOptions __attribute__((deprecated("Use incomingAudioOptions and outgoingAudioOptions instead")));
 		[Export ("audioOptions", ArgumentSemantic.Retain)]
+		[Obsolete("Use IncomingVideoOptions and OutgoingVideoOptions instead")]
 		ACSAudioOptions AudioOptions { get; set; }
 	}
 
@@ -1698,6 +1702,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @property (retain) DEPRECATED_MSG_ATTRIBUTE("Use incomingVideoOptions and outgoingVideoOptions instead") ACSVideoOptions * videoOptions __attribute__((deprecated("Use incomingVideoOptions and outgoingVideoOptions instead")));
 		[Export ("videoOptions", ArgumentSemantic.Retain)]
+		[Obsolete("Use IncomingVideoOptions and OutgoingVideoOptions instead")]
 		ACSVideoOptions VideoOptions { get; set; }
 	}
 
@@ -1707,10 +1712,12 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @property (retain) DEPRECATED_MSG_ATTRIBUTE("Use incomingVideoOptions and outgoingVideoOptions instead") ACSVideoOptions * videoOptions __attribute__((deprecated("Use incomingVideoOptions and outgoingVideoOptions instead")));
 		[Export ("videoOptions", ArgumentSemantic.Retain)]
+		[Obsolete("Use IncomingVideoOptions and OutgoingVideoOptions instead")]
 		ACSVideoOptions VideoOptions { get; set; }
 
 		// @property (retain) DEPRECATED_MSG_ATTRIBUTE("Use incomingAudioOptions and outgoingAudioOptions instead") ACSAudioOptions * audioOptions __attribute__((deprecated("Use incomingAudioOptions and outgoingAudioOptions instead")));
 		[Export ("audioOptions", ArgumentSemantic.Retain)]
+		[Obsolete("Use IncomingVideoOptions and OutgoingVideoOptions instead")]
 		ACSAudioOptions AudioOptions { get; set; }
 
 		// @property (nonatomic) PhoneNumberIdentifier * _Nonnull alternateCallerId;
