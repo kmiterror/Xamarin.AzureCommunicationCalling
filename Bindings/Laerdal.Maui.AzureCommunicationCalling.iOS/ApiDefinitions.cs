@@ -1097,7 +1097,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @optional -(void)onStateChanged:(ACSLocalVideoStream * _Nonnull)localVideoStream :(ACSVideoStreamStateChangedEventArgs * _Nonnull)args __attribute__((swift_name("localVideoStream(_:didChangeState:)")));
 		[Export ("onStateChanged::")]
-		void  (ACSLocalVideoStream localVideoStream, ACSVideoStreamStateChangedEventArgs args);
+		void OnStateChanged(ACSLocalVideoStream localVideoStream, ACSVideoStreamStateChangedEventArgs args);
 	}
 
 	// @protocol ACSCallAgentDelegate <NSObject>
@@ -1197,7 +1197,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @optional -(void)onStateChanged:(ACSRemoteVideoStream * _Nonnull)remoteVideoStream :(ACSVideoStreamStateChangedEventArgs * _Nonnull)args __attribute__((swift_name("remoteVideoStream(_:didChangeState:)")));
 		[Export ("onStateChanged::")]
-		void  (ACSRemoteVideoStream remoteVideoStream, ACSVideoStreamStateChangedEventArgs args);
+		void OnStateChanged(ACSRemoteVideoStream remoteVideoStream, ACSVideoStreamStateChangedEventArgs args);
 	}
 
 	// @protocol ACSIncomingCallDelegate <NSObject>
@@ -1207,7 +1207,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @optional -(void)onCallEnded:(ACSIncomingCall * _Nonnull)incomingCall :(ACSPropertyChangedEventArgs * _Nonnull)args __attribute__((swift_name("incomingCall(_:didEnd:)")));
 		[Export ("onCallEnded::")]
-		void  (ACSIncomingCall incomingCall, ACSPropertyChangedEventArgs args);
+		void OnCallEnded(ACSIncomingCall incomingCall, ACSPropertyChangedEventArgs args);
 	}
 
 	// @protocol ACSTeamsCallAgentDelegate <NSObject>
@@ -1265,7 +1265,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @optional -(void)onCallEnded:(ACSTeamsIncomingCall * _Nonnull)teamsIncomingCall :(ACSPropertyChangedEventArgs * _Nonnull)args __attribute__((swift_name("teamsIncomingCall(_:didEnd:)")));
 		[Export ("onCallEnded::")]
-		void  (ACSTeamsIncomingCall teamsIncomingCall, ACSPropertyChangedEventArgs args);
+		void OnCallEnded(ACSTeamsIncomingCall teamsIncomingCall, ACSPropertyChangedEventArgs args);
 	}
 
 	// @protocol ACSDeviceManagerDelegate <NSObject>
@@ -1275,7 +1275,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @optional -(void)onCamerasUpdated:(ACSDeviceManager * _Nonnull)deviceManager :(ACSVideoDevicesUpdatedEventArgs * _Nonnull)args __attribute__((swift_name("deviceManager(_:didUpdateCameras:)")));
 		[Export ("onCamerasUpdated::")]
-		void  (ACSDeviceManager deviceManager, ACSVideoDevicesUpdatedEventArgs args);
+		void OnCamerasUpdated(ACSDeviceManager deviceManager, ACSVideoDevicesUpdatedEventArgs args);
 	}
 
 	// @protocol ACSCallLobbyDelegate <NSObject>
@@ -1285,7 +1285,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @optional -(void)onLobbyParticipantsUpdated:(ACSCallLobby * _Nonnull)callLobby :(ACSParticipantsUpdatedEventArgs * _Nonnull)args __attribute__((swift_name("callLobby(_:didUpdateLobbyParticipants:)")));
 		[Export ("onLobbyParticipantsUpdated::")]
-		void  (ACSCallLobby callLobby, ACSParticipantsUpdatedEventArgs args);
+		void OnLobbyParticipantsUpdated(ACSCallLobby callLobby, ACSParticipantsUpdatedEventArgs args);
 	}
 
 	// @protocol ACSRecordingCallFeatureDelegate <NSObject>
@@ -1295,7 +1295,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @optional -(void)onIsRecordingActiveChanged:(ACSRecordingCallFeature * _Nonnull)recordingCallFeature :(ACSPropertyChangedEventArgs * _Nonnull)args __attribute__((swift_name("recordingCallFeature(_:didChangeRecordingState:)")));
 		[Export ("onIsRecordingActiveChanged::")]
-		void  (ACSRecordingCallFeature recordingCallFeature, ACSPropertyChangedEventArgs args);
+		void OnIsRecordingActiveChanged(ACSRecordingCallFeature recordingCallFeature, ACSPropertyChangedEventArgs args);
 	}
 
 	// @protocol ACSTranscriptionCallFeatureDelegate <NSObject>
@@ -1305,7 +1305,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @optional -(void)onIsTranscriptionActiveChanged:(ACSTranscriptionCallFeature * _Nonnull)transcriptionCallFeature :(ACSPropertyChangedEventArgs * _Nonnull)args __attribute__((swift_name("transcriptionCallFeature(_:didChangeTranscriptionState:)")));
 		[Export ("onIsTranscriptionActiveChanged::")]
-		void  (ACSTranscriptionCallFeature transcriptionCallFeature, ACSPropertyChangedEventArgs args);
+		void OnIsTranscriptionActiveChanged(ACSTranscriptionCallFeature transcriptionCallFeature, ACSPropertyChangedEventArgs args);
 	}
 
 	// @protocol ACSTeamsCaptionsDelegate <NSObject>
@@ -1337,7 +1337,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @optional -(void)onDominantSpeakersChanged:(ACSDominantSpeakersCallFeature * _Nonnull)dominantSpeakersCallFeature :(ACSPropertyChangedEventArgs * _Nonnull)args __attribute__((swift_name("dominantSpeakersCallFeature(_:didChangeDominantSpeakers:)")));
 		[Export ("onDominantSpeakersChanged::")]
-		void  (ACSDominantSpeakersCallFeature dominantSpeakersCallFeature, ACSPropertyChangedEventArgs args);
+		void OnDominantSpeakersChanged(ACSDominantSpeakersCallFeature dominantSpeakersCallFeature, ACSPropertyChangedEventArgs args);
 	}
 
 	// @protocol ACSRaiseHandCallFeatureDelegate <NSObject>
@@ -1361,7 +1361,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @optional -(void)onSpotlightChanged:(ACSSpotlightCallFeature * _Nonnull)spotlightCallFeature :(ACSSpotlightChangedEventArgs * _Nonnull)args __attribute__((swift_name("spotlightCallFeature(_:didChangeSpotlight:)")));
 		[Export ("onSpotlightChanged::")]
-		void  (ACSSpotlightCallFeature spotlightCallFeature, ACSSpotlightChangedEventArgs args);
+		void OnSpotlightChanged(ACSSpotlightCallFeature spotlightCallFeature, ACSSpotlightChangedEventArgs args);
 	}
 
 	// @protocol ACSScreenShareOutgoingVideoStreamDelegate <NSObject>
@@ -1413,7 +1413,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @optional -(void)onStateChanged:(ACSLocalOutgoingAudioStream * _Nonnull)localOutgoingAudioStream :(ACSAudioStreamStateChangedEventArgs * _Nonnull)args __attribute__((swift_name("localAudioStream(_:didChangeState:)")));
 		[Export ("onStateChanged::")]
-		void  (ACSLocalOutgoingAudioStream localOutgoingAudioStream, ACSAudioStreamStateChangedEventArgs args);
+		void OnStateChanged(ACSLocalOutgoingAudioStream localOutgoingAudioStream, ACSAudioStreamStateChangedEventArgs args);
 	}
 
 	// @protocol ACSRemoteIncomingAudioStreamDelegate <NSObject>
@@ -1423,7 +1423,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @optional -(void)onStateChanged:(ACSRemoteIncomingAudioStream * _Nonnull)remoteIncomingAudioStream :(ACSAudioStreamStateChangedEventArgs * _Nonnull)args __attribute__((swift_name("remoteAudioStream(_:didChangeState:)")));
 		[Export ("onStateChanged::")]
-		void  (ACSRemoteIncomingAudioStream remoteIncomingAudioStream, ACSAudioStreamStateChangedEventArgs args);
+		void OnStateChanged(ACSRemoteIncomingAudioStream remoteIncomingAudioStream, ACSAudioStreamStateChangedEventArgs args);
 	}
 
 	// @protocol ACSRawIncomingAudioStreamDelegate <NSObject>
@@ -1447,7 +1447,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @optional -(void)onStateChanged:(ACSRawOutgoingAudioStream * _Nonnull)rawOutgoingAudioStream :(ACSAudioStreamStateChangedEventArgs * _Nonnull)args __attribute__((swift_name("rawOutgoingAudioStream(_:didChangeState:)")));
 		[Export ("onStateChanged::")]
-		void  (ACSRawOutgoingAudioStream rawOutgoingAudioStream, ACSAudioStreamStateChangedEventArgs args);
+		void OnStateChanged(ACSRawOutgoingAudioStream rawOutgoingAudioStream, ACSAudioStreamStateChangedEventArgs args);
 	}
 
 	// @protocol ACSLocalVideoEffectsFeatureDelegate <NSObject>
@@ -1563,7 +1563,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @optional -(void)onReportReceived:(ACSMediaStatisticsCallFeature * _Nonnull)mediaStatisticsCallFeature :(ACSMediaStatisticsReportReceivedEventArgs * _Nonnull)args __attribute__((swift_name("mediaStatisticsCallFeature(_:didReceiveReport:)")));
 		[Export ("onReportReceived::")]
-		void  (ACSMediaStatisticsCallFeature mediaStatisticsCallFeature, ACSMediaStatisticsReportReceivedEventArgs args);
+		void OnReportReceived(ACSMediaStatisticsCallFeature mediaStatisticsCallFeature, ACSMediaStatisticsReportReceivedEventArgs args);
 	}
 
 	// @protocol ACSDataChannelReceiverDelegate <NSObject>
@@ -1587,7 +1587,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @optional -(void)onReceiverCreated:(ACSDataChannelCallFeature * _Nonnull)dataChannelCallFeature :(ACSDataChannelReceiverCreatedEventArgs * _Nonnull)args __attribute__((swift_name("dataChannelCallFeature(_:didCreateReceiver:)")));
 		[Export ("onReceiverCreated::")]
-		void  (ACSDataChannelCallFeature dataChannelCallFeature, ACSDataChannelReceiverCreatedEventArgs args);
+		void OnReceiverCreated(ACSDataChannelCallFeature dataChannelCallFeature, ACSDataChannelReceiverCreatedEventArgs args);
 	}
 
 	// @protocol ACSCapabilitiesCallFeatureDelegate <NSObject>
@@ -1597,7 +1597,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @optional -(void)onCapabilitiesChanged:(ACSCapabilitiesCallFeature * _Nonnull)capabilitiesCallFeature :(ACSCapabilitiesChangedEventArgs * _Nonnull)args __attribute__((swift_name("capabilitiesCallFeature(_:didChangeCapabilities:)")));
 		[Export ("onCapabilitiesChanged::")]
-		void  (ACSCapabilitiesCallFeature capabilitiesCallFeature, ACSCapabilitiesChangedEventArgs args);
+		void OnCapabilitiesChanged(ACSCapabilitiesCallFeature capabilitiesCallFeature, ACSCapabilitiesChangedEventArgs args);
 	}
 
 	// @interface ACSCallVideoStream : NSObject
