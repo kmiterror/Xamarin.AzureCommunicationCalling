@@ -18,7 +18,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 
 		// extern const unsigned char[] AzureCommunicationCommonVersionString;
 		[Field ("AzureCommunicationCommonVersionString", "__Internal")]
-		byte[] AzureCommunicationCommonVersionString { get; }
+		NSString AzureCommunicationCommonVersionString { get; }
 	}
 
 	// @interface CommunicationAccessToken : NSObject
@@ -37,7 +37,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 		// -(instancetype _Nonnull)initWithToken:(NSString * _Nonnull)token expiresOn:(NSDate * _Nonnull)expiresOn __attribute__((objc_designated_initializer));
 		[Export ("initWithToken:expiresOn:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (string token, NSDate expiresOn);
+		IntPtr Constructor (string token, NSDate expiresOn);
 	}
 
 	// @interface CommunicationCloudEnvironment : NSObject
@@ -63,11 +63,11 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 		// -(instancetype _Nonnull)initWithEnvironmentValue:(NSString * _Nonnull)environmentValue __attribute__((objc_designated_initializer));
 		[Export ("initWithEnvironmentValue:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (string environmentValue);
+		IntPtr Constructor (string environmentValue);
 
 		// -(NSString * _Nonnull)getEnvironmentValue __attribute__((warn_unused_result("")));
 		[Export ("getEnvironmentValue")]
-		[Verify (MethodToProperty)]
+		// [Verify (MethodToProperty)]
 		string EnvironmentValue { get; }
 	}
 
@@ -103,12 +103,12 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 		// -(instancetype _Nullable)initWithToken:(NSString * _Nonnull)token error:(NSError * _Nullable * _Nullable)error __attribute__((objc_designated_initializer));
 		[Export ("initWithToken:error:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (string token, [NullAllowed] out NSError error);
+		IntPtr Constructor (string token, [NullAllowed] out NSError error);
 
 		// -(instancetype _Nullable)initWithOptions:(CommunicationTokenRefreshOptions * _Nonnull)options error:(NSError * _Nullable * _Nullable)error __attribute__((objc_designated_initializer));
 		[Export ("initWithOptions:error:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (CommunicationTokenRefreshOptions options, [NullAllowed] out NSError error);
+		IntPtr Constructor (CommunicationTokenRefreshOptions options, [NullAllowed] out NSError error);
 
 		// -(void)tokenWithCompletionHandler:(void (^ _Nonnull)(CommunicationAccessToken * _Nullable, NSError * _Nullable))completionHandler;
 		[Export ("tokenWithCompletionHandler:")]
@@ -127,13 +127,13 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 		// -(instancetype _Nonnull)initWithInitialToken:(NSString * _Nullable)initialToken refreshProactively:(BOOL)refreshProactively tokenRefresher:(void (^ _Nonnull)(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable)))tokenRefresher __attribute__((objc_designated_initializer));
 		[Export ("initWithInitialToken:refreshProactively:tokenRefresher:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor ([NullAllowed] string initialToken, bool refreshProactively, Action<Action<NSString, NSError>> tokenRefresher);
+		IntPtr Constructor ([NullAllowed] string initialToken, bool refreshProactively, Action<Action<NSString, NSError>> tokenRefresher);
 	}
 
 	// @interface CommunicationUserIdentifier : NSObject <CommunicationIdentifier>
 	[BaseType (typeof(NSObject), Name = "_TtC24AzureCommunicationCommon27CommunicationUserIdentifier")]
 	[DisableDefaultCtor]
-	interface CommunicationUserIdentifier : ICommunicationIdentifier
+	interface CommunicationUserIdentifier : CommunicationIdentifier
 	{
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull rawId;
 		[Export ("rawId")]
@@ -150,7 +150,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 		// -(instancetype _Nonnull)initWithIdentifier:(NSString * _Nonnull)identifier __attribute__((objc_designated_initializer));
 		[Export ("initWithIdentifier:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (string identifier);
+		IntPtr Constructor (string identifier);
 	}
 
 	// @interface IdentifierKind : NSObject
@@ -186,13 +186,13 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 		// -(instancetype _Nonnull)initWithRawValue:(NSString * _Nonnull)rawValue __attribute__((objc_designated_initializer));
 		[Export ("initWithRawValue:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (string rawValue);
+		IntPtr Constructor (string rawValue);
 	}
 
 	// @interface MicrosoftTeamsAppIdentifier : NSObject <CommunicationIdentifier>
 	[BaseType (typeof(NSObject), Name = "_TtC24AzureCommunicationCommon27MicrosoftTeamsAppIdentifier")]
 	[DisableDefaultCtor]
-	interface MicrosoftTeamsAppIdentifier : ICommunicationIdentifier
+	interface MicrosoftTeamsAppIdentifier : CommunicationIdentifier
 	{
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull appId;
 		[Export ("appId")]
@@ -213,7 +213,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 		// -(instancetype _Nonnull)initWithAppId:(NSString * _Nonnull)appId cloudEnvironment:(CommunicationCloudEnvironment * _Nonnull)cloudEnvironment __attribute__((objc_designated_initializer));
 		[Export ("initWithAppId:cloudEnvironment:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (string appId, CommunicationCloudEnvironment cloudEnvironment);
+		IntPtr Constructor (string appId, CommunicationCloudEnvironment cloudEnvironment);
 
 		// -(BOOL)isEqual:(id _Nullable)object __attribute__((warn_unused_result("")));
 		[Export ("isEqual:")]
@@ -223,7 +223,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	// @interface MicrosoftTeamsUserIdentifier : NSObject <CommunicationIdentifier>
 	[BaseType (typeof(NSObject), Name = "_TtC24AzureCommunicationCommon28MicrosoftTeamsUserIdentifier")]
 	[DisableDefaultCtor]
-	interface MicrosoftTeamsUserIdentifier : ICommunicationIdentifier
+	interface MicrosoftTeamsUserIdentifier : CommunicationIdentifier
 	{
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull userId;
 		[Export ("userId")]
@@ -252,7 +252,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 		// -(instancetype _Nonnull)initWithUserId:(NSString * _Nonnull)userId isAnonymous:(BOOL)isAnonymous rawId:(NSString * _Nullable)rawId cloudEnvironment:(CommunicationCloudEnvironment * _Nonnull)cloudEnvironment __attribute__((objc_designated_initializer));
 		[Export ("initWithUserId:isAnonymous:rawId:cloudEnvironment:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (string userId, bool isAnonymous, [NullAllowed] string rawId, CommunicationCloudEnvironment cloudEnvironment);
+		IntPtr Constructor (string userId, bool isAnonymous, [NullAllowed] string rawId, CommunicationCloudEnvironment cloudEnvironment);
 
 		// -(BOOL)isEqual:(id _Nullable)object __attribute__((warn_unused_result("")));
 		[Export ("isEqual:")]
@@ -262,7 +262,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	// @interface PhoneNumberIdentifier : NSObject <CommunicationIdentifier>
 	[BaseType (typeof(NSObject), Name = "_TtC24AzureCommunicationCommon21PhoneNumberIdentifier")]
 	[DisableDefaultCtor]
-	interface PhoneNumberIdentifier : ICommunicationIdentifier
+	interface PhoneNumberIdentifier : CommunicationIdentifier
 	{
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull phoneNumber;
 		[Export ("phoneNumber")]
@@ -279,7 +279,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 		// -(instancetype _Nonnull)initWithPhoneNumber:(NSString * _Nonnull)phoneNumber rawId:(NSString * _Nullable)rawId __attribute__((objc_designated_initializer));
 		[Export ("initWithPhoneNumber:rawId:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (string phoneNumber, [NullAllowed] string rawId);
+		IntPtr Constructor (string phoneNumber, [NullAllowed] string rawId);
 
 		// -(BOOL)isEqual:(id _Nullable)object __attribute__((warn_unused_result("")));
 		[Export ("isEqual:")]
@@ -289,7 +289,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	// @interface UnknownIdentifier : NSObject <CommunicationIdentifier>
 	[BaseType (typeof(NSObject), Name = "_TtC24AzureCommunicationCommon17UnknownIdentifier")]
 	[DisableDefaultCtor]
-	interface UnknownIdentifier : ICommunicationIdentifier
+	interface UnknownIdentifier : CommunicationIdentifier
 	{
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull rawId;
 		[Export ("rawId")]
@@ -306,7 +306,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 		// -(instancetype _Nonnull)initWithIdentifier:(NSString * _Nonnull)identifier __attribute__((objc_designated_initializer));
 		[Export ("initWithIdentifier:")]
 		[DesignatedInitializer]
-		NativeHandle Constructor (string identifier);
+		IntPtr Constructor (string identifier);
 	}
 
 	// @interface ACSCallKitRemoteInfo : NSObject
@@ -329,7 +329,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// -(instancetype _Nonnull)init:(CXProviderConfiguration * _Nonnull)providerConfiguration __attribute__((swift_name("init(with:)")));
 		[Export ("init:")]
-		NativeHandle Constructor (CXProviderConfiguration providerConfiguration);
+		IntPtr Constructor (CXProviderConfiguration providerConfiguration);
 
 		// @property (readonly, retain) CXProviderConfiguration * _Nonnull providerConfiguration;
 		[Export ("providerConfiguration", ArgumentSemantic.Retain)]
@@ -363,12 +363,12 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 
 		// -(_Bool)isRendering;
 		[Export ("isRendering")]
-		[Verify (MethodToProperty)]
+		// [Verify (MethodToProperty)]
 		bool IsRendering { get; }
 
 		// -(struct ACSStreamSize)videoFrameSize;
 		[Export ("videoFrameSize")]
-		[Verify (MethodToProperty)]
+		// [Verify (MethodToProperty)]
 		ACSStreamSize VideoFrameSize { get; }
 	}
 
@@ -406,11 +406,11 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 
 		// -(instancetype _Nonnull)initWithLocalVideoStream:(ACSLocalVideoStream * _Nonnull)localVideoStream withError:(NSError * _Nullable * _Nonnull)nonnull_error __attribute__((swift_error("nonnull_error"))) __attribute__((swift_name("init(localVideoStream:)")));
 		[Export ("initWithLocalVideoStream:withError:")]
-		NativeHandle Constructor (ACSLocalVideoStream localVideoStream, [NullAllowed] out NSError nonnull_error);
+		IntPtr Constructor (ACSLocalVideoStream localVideoStream, [NullAllowed] out NSError nonnull_error);
 
 		// -(instancetype _Nonnull)initWithRemoteVideoStream:(ACSRemoteVideoStream * _Nonnull)remoteVideoStream withError:(NSError * _Nullable * _Nonnull)nonnull_error __attribute__((swift_error("nonnull_error"))) __attribute__((swift_name("init(remoteVideoStream:)")));
 		[Export ("initWithRemoteVideoStream:withError:")]
-		NativeHandle Constructor (ACSRemoteVideoStream remoteVideoStream, [NullAllowed] out NSError nonnull_error);
+		IntPtr Constructor (ACSRemoteVideoStream remoteVideoStream, [NullAllowed] out NSError nonnull_error);
 
 		// -(ACSVideoStreamRendererView * _Nonnull)createView:(NSError * _Nullable * _Nonnull)nonnull_error __attribute__((swift_error("nonnull_error"))) __attribute__((swift_name("createView()")));
 		[Export ("createView:")]
@@ -1682,7 +1682,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// -(instancetype _Nonnull)init:(NSArray<ACSLocalVideoStream *> * _Nonnull)localVideoStreams __attribute__((swift_name("init(localVideoStreams:)")));
 		[Export ("init:")]
-		NativeHandle Constructor (ACSLocalVideoStream[] localVideoStreams);
+		IntPtr Constructor (ACSLocalVideoStream[] localVideoStreams);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -1700,7 +1700,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// -(instancetype _Nonnull)init:(ACSVideoDeviceInfo * _Nonnull)camera __attribute__((swift_name("init(camera:)")));
 		[Export ("init:")]
-		NativeHandle Constructor (ACSVideoDeviceInfo camera);
+		IntPtr Constructor (ACSVideoDeviceInfo camera);
 
 		// @property (readonly, retain) ACSVideoDeviceInfo * _Nonnull source;
 		[Export ("source", ArgumentSemantic.Retain)]
@@ -2045,7 +2045,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// -(instancetype _Nonnull)init:(NSUUID * _Nonnull)groupId __attribute__((swift_name("init(groupId:)")));
 		[Export ("init:")]
-		NativeHandle Constructor (NSUuid groupId);
+		IntPtr Constructor (NSUuid groupId);
 
 		// @property (readonly, retain) NSUUID * _Nonnull groupId;
 		[Export ("groupId", ArgumentSemantic.Retain)]
@@ -2059,7 +2059,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// -(instancetype _Nonnull)initWithThreadId:(NSString * _Nonnull)threadId organizerId:(NSUUID * _Nonnull)organizerId tenantId:(NSUUID * _Nonnull)tenantId messageId:(NSString * _Nonnull)messageId __attribute__((swift_name("init(withThreadId:organizerId:tenantId:messageId:)")));
 		[Export ("initWithThreadId:organizerId:tenantId:messageId:")]
-		NativeHandle Constructor (string threadId, NSUuid organizerId, NSUuid tenantId, string messageId);
+		IntPtr Constructor (string threadId, NSUuid organizerId, NSUuid tenantId, string messageId);
 
 		// @property (readonly, retain) NSString * _Nonnull threadId;
 		[Export ("threadId", ArgumentSemantic.Retain)]
@@ -2085,7 +2085,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// -(instancetype _Nonnull)initWithMeetingId:(NSString * _Nonnull)meetingId passcode:(NSString * _Nonnull)passcode __attribute__((swift_name("init(with:passcode:)")));
 		[Export ("initWithMeetingId:passcode:")]
-		NativeHandle Constructor (string meetingId, string passcode);
+		IntPtr Constructor (string meetingId, string passcode);
 
 		// @property (readonly, retain) NSString * _Nonnull meetingId;
 		[Export ("meetingId", ArgumentSemantic.Retain)]
@@ -2103,7 +2103,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// -(instancetype _Nonnull)init:(NSString * _Nonnull)meetingLink __attribute__((swift_name("init(meetingLink:)")));
 		[Export ("init:")]
-		NativeHandle Constructor (string meetingLink);
+		IntPtr Constructor (string meetingLink);
 
 		// @property (readonly, retain) NSString * _Nonnull meetingLink;
 		[Export ("meetingLink", ArgumentSemantic.Retain)]
@@ -2717,7 +2717,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// -(instancetype _Nonnull)init:(ACSCallClientOptions * _Nonnull)options __attribute__((swift_name("init(options:)")));
 		[Export ("init:")]
-		NativeHandle Constructor (ACSCallClientOptions options);
+		IntPtr Constructor (ACSCallClientOptions options);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -3501,7 +3501,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// -(instancetype _Nonnull)init:(ACSScalingMode)scalingMode __attribute__((swift_name("init(scalingMode:)")));
 		[Export ("init:")]
-		NativeHandle Constructor (ACSScalingMode scalingMode);
+		IntPtr Constructor (ACSScalingMode scalingMode);
 
 		// -(void)dealloc;
 		[Export ("dealloc")]
@@ -3658,7 +3658,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// -(instancetype _Nonnull)init:(ACSRawOutgoingVideoStreamOptions * _Nonnull)videoStreamOptions __attribute__((swift_name("init(videoStreamOptions:)")));
 		[Export ("init:")]
-		NativeHandle Constructor (ACSRawOutgoingVideoStreamOptions videoStreamOptions);
+		IntPtr Constructor (ACSRawOutgoingVideoStreamOptions videoStreamOptions);
 
 		[Wrap ("WeakDelegate")]
 		[NullAllowed]
@@ -3680,7 +3680,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// -(instancetype _Nonnull)init:(ACSRawOutgoingVideoStreamOptions * _Nonnull)videoStreamOptions __attribute__((swift_name("init(videoStreamOptions:)")));
 		[Export ("init:")]
-		NativeHandle Constructor (ACSRawOutgoingVideoStreamOptions videoStreamOptions);
+		IntPtr Constructor (ACSRawOutgoingVideoStreamOptions videoStreamOptions);
 
 		[Wrap ("WeakDelegate")]
 		[NullAllowed]
@@ -3884,7 +3884,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// -(instancetype _Nonnull)init:(ACSRawIncomingAudioStreamOptions * _Nonnull)options __attribute__((swift_name("init(options:)")));
 		[Export ("init:")]
-		NativeHandle Constructor (ACSRawIncomingAudioStreamOptions options);
+		IntPtr Constructor (ACSRawIncomingAudioStreamOptions options);
 
 		[Wrap ("WeakDelegate")]
 		[NullAllowed]
@@ -3906,7 +3906,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// -(instancetype _Nonnull)init:(ACSRawOutgoingAudioStreamOptions * _Nonnull)options __attribute__((swift_name("init(options:)")));
 		[Export ("init:")]
-		NativeHandle Constructor (ACSRawOutgoingAudioStreamOptions options);
+		IntPtr Constructor (ACSRawOutgoingAudioStreamOptions options);
 
 		// @property (readonly) int64_t expectedBufferSizeInBytes;
 		[Export ("expectedBufferSizeInBytes")]
@@ -3940,7 +3940,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// -(instancetype _Nonnull)init:(NSString * _Nonnull)roomId __attribute__((swift_name("init(roomId:)")));
 		[Export ("init:")]
-		NativeHandle Constructor (string roomId);
+		IntPtr Constructor (string roomId);
 
 		// @property (readonly, retain) NSString * _Nonnull roomId;
 		[Export ("roomId", ArgumentSemantic.Retain)]
@@ -4119,17 +4119,17 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 
 		// -(ACSDiagnosticQuality)valueForNetworkReconnect __attribute__((swift_private));
 		[Export ("valueForNetworkReconnect")]
-		[Verify (MethodToProperty)]
+		// [Verify (MethodToProperty)]
 		ACSDiagnosticQuality ValueForNetworkReconnect { get; }
 
 		// -(ACSDiagnosticQuality)valueForNetworkReceiveQuality __attribute__((swift_private));
 		[Export ("valueForNetworkReceiveQuality")]
-		[Verify (MethodToProperty)]
+		// [Verify (MethodToProperty)]
 		ACSDiagnosticQuality ValueForNetworkReceiveQuality { get; }
 
 		// -(ACSDiagnosticQuality)valueForNetworkSendQuality __attribute__((swift_private));
 		[Export ("valueForNetworkSendQuality")]
-		[Verify (MethodToProperty)]
+		// [Verify (MethodToProperty)]
 		ACSDiagnosticQuality ValueForNetworkSendQuality { get; }
 	}
 
@@ -4700,7 +4700,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 
 		// -(ACSDataChannelMessage * _Nullable)receiveMessage;
 		[NullAllowed, Export ("receiveMessage")]
-		[Verify (MethodToProperty)]
+		// [Verify (MethodToProperty)]
 		ACSDataChannelMessage ReceiveMessage { get; }
 	}
 
