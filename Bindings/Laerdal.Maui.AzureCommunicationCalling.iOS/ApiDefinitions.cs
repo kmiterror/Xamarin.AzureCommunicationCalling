@@ -312,7 +312,7 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	{
 		// @property (retain) CXHandle * _Nullable handle;
 		[NullAllowed, Export ("handle", ArgumentSemantic.Retain)]
-		CXHandle Handle { get; set; }
+		IntPtr Handle { get; set; }
 
 		// @property (retain) NSString * _Nullable displayName;
 		[NullAllowed, Export ("displayName", ArgumentSemantic.Retain)]
