@@ -125,9 +125,6 @@ namespace Laerdal.Maui.AzureCommunicationCalling.iOS
 	interface CommunicationTokenRefreshOptions
 	{
 		// -(instancetype _Nonnull)initWithInitialToken:(NSString * _Nullable)initialToken refreshProactively:(BOOL)refreshProactively tokenRefresher:(void (^ _Nonnull)(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable)))tokenRefresher __attribute__((objc_designated_initializer));
-		[Export ("initWithInitialToken:refreshProactively:tokenRefresher:")]
-		[DesignatedInitializer]
-		IntPtr Constructor ([NullAllowed] string initialToken, bool refreshProactively, Action<Action<NSString, NSError>> tokenRefresher);
 	}
 
 	// @interface CommunicationUserIdentifier : NSObject <CommunicationIdentifier>
